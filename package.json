@@ -17,6 +17,6 @@
   },
   "homepage": "https://github.com/justyxxx/cypress-testing#readme",
   "dependencies": {
-    "cypress": "^4.1.0"
+    "cypress": "^4.12.1"
   }
 }
