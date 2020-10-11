@@ -17,22 +17,20 @@ class LoginPage {
     }
 
     loginSubmit() {
-        const submitButton = cy.get('[name=login]').click()
+        cy.get('[name=login]').click()
     }
 
     confimSubmit() {
-        return cy.get('strong').should('be.visible').should('have.text', 'qwerasdf')
+        cy.get('strong').should('be.visible').should('have.text', 'qwerasdf')
     }
     unconfimSubmitWrongPassword() {
-        return cy
-            .get('.woocommerce-error > li')
-            .should(
-                'have.text',
-                'ERROR: The password you entered for the username qwerasdf is incorrect. Lost your password?'
-            )
+        cy.get('.woocommerce-error > li').should(
+            'have.text',
+            'ERROR: The password you entered for the username qwerasdf is incorrect. Lost your password?'
+        )
     }
     unconfimSubmitWrongUsername() {
-        return cy.get('.woocommerce-error > li').should('have.text', 'ERROR: Invalid username. Lost your password?')
+        cy.get('.woocommerce-error > li').should('have.text', 'ERROR: Invalid username. Lost your password?')
     }
 }
 export default new LoginPage()
