@@ -1,0 +1,25 @@
+describe('Tests for reqres.in', () => {
+    it('Positive: GET request - get users data', () => {
+        cy.request({
+            method: 'GET',
+            url: '/api/users?page=2',
+            body: {},
+        }).then((response) => {
+            expect(response.status).to.eq(200)
+            expect(response.body.page).to.eq(2)
+            expect(response.body.total).to.eq(12)
+            expect(response.body.per_page).to.eq(6)
+            expect(response.body.total_pages).to.eq(2)
+        })
+    })
+    it('Negative: GET request - 404 Not found', () => {
+        cy.request({
+            method: 'GET',
+            url: '/api/unknown/23',
+            body: {},
+            failOnStatusCode: false,
+        }).then((response) => {
+            expect(response.status).to.eq(404)
+        })
+    })
+})
