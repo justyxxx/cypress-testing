@@ -1,23 +1,18 @@
 const LOGIN_PAGE_URL = 'http://practice.automationtesting.in/my-account/'
+
 class LoginPage {
     openLohinPage() {
         cy.visit(LOGIN_PAGE_URL)
     }
 
-    typeLogin(login) {
-        const loginField = cy.get('#username')
-        loginField.clear().type(login)
-        return this
-    }
-
-    typePassword(password) {
-        const passwordField = cy.get('#password')
-        passwordField.clear().type(password)
-        return this
-    }
-
     loginSubmit() {
         cy.get('[name=login]').click()
+    }
+
+    loginAuth(login, password) {
+        cy.get('#username').clear().type(login)
+        cy.get('#password').click().type(password)
+        this.loginSubmit()
     }
 
     confimSubmit() {
